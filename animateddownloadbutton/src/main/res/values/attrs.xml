@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AnimatedDownloadButton">
+        <attr name="frameCornerRadius" format="dimension" />
+        <attr name="frameStrokeWidth" format="dimension" />
+        <attr name="animationDuration" format="integer" />
+        <attr name="centerIconSize" format="dimension" />
+        <attr name="tintColor" format="reference" />
+    </declare-styleable>
+</resources>

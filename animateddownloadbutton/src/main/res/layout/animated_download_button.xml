@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    tools:layout_width="100dp"
+    tools:layout_height="100dp"
+    tools:layout_gravity="center"
+    tools:parentTag="android.widget.FrameLayout"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/buttonBackgroundFrame"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/buttonDownloadIcon"
+        android:src="@drawable/ic_file_download"
+        android:layout_gravity="center"
+        android:layout_width="48dp"
+        android:layout_height="48dp" />
+
+    <ProgressBar
+        android:id="@+id/buttonProgressBar"
+        android:indeterminate="true"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/buttonTickIcon"
+        android:layout_gravity="center"
+        android:layout_width="48dp"
+        android:layout_height="48dp" />
+
+</merge>
