@@ -11,7 +11,7 @@ apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
 group = PUBLISH_GROUP_ID
-version = "0.1"
+version = "0.2"
 
 ext["signing.keyId"] = ''
 ext["signing.password"] = ''
