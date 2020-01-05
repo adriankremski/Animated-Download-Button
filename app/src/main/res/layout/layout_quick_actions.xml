@@ -1,96 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:parentTag="android.widget.LinearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/button1"
-        android:orientation="vertical"
-        android:layout_width="0dp"
-        android:visibility="invisible"
-        android:translationY="80dp"
-        android:layout_weight="0.3"
+        android:id="@+id/buttonsContainer"
+        android:orientation="horizontal"
+        tools:parentTag="android.widget.LinearLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:src="@drawable/ic_donut_large_black_24dp"
-            android:layout_gravity="center"
-            android:background="@drawable/icon_background"
-            android:layout_marginBottom="16dp"
-            android:padding="16dp"
-            android:layout_width="64dp"
-            android:layout_height="64dp"/>
+        <LinearLayout
+            android:id="@+id/buttonLeft"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:visibility="invisible"
+            android:translationY="80dp"
+            android:layout_weight="0.3"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:text="Add timesheet"
-            android:background="@drawable/subtitle_background"
-            android:gravity="center"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/leftButtonIcon"
+                android:layout_gravity="center"
+                android:background="@drawable/icon_background"
+                android:layout_marginBottom="16dp"
+                android:padding="16dp"
+                android:layout_width="64dp"
+                android:layout_height="64dp" />
 
+            <TextView
+                android:id="@+id/leftButtonText"
+                android:text="Add timesheet"
+                android:background="@drawable/subtitle_background"
+                android:gravity="center"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/buttonCenter"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:layout_weight="0.3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/centerButtonIcon"
+                android:layout_gravity="center"
+                android:background="@drawable/icon_background"
+                android:layout_marginBottom="16dp"
+                android:padding="16dp"
+                android:layout_width="64dp"
+                android:layout_height="64dp" />
+
+            <TextView
+                android:id="@+id/centerButtonText"
+                android:text="Add Task"
+                android:gravity="center"
+                android:background="@drawable/subtitle_background"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/buttonRight"
+            android:orientation="vertical"
+            android:layout_weight="0.3"
+            android:visibility="invisible"
+            android:layout_width="0dp"
+            android:translationY="80dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/rightButtonIcon"
+                android:layout_gravity="center"
+                android:background="@drawable/icon_background"
+                android:layout_marginBottom="16dp"
+                android:padding="16dp"
+                android:layout_width="64dp"
+                android:layout_height="64dp" />
+
+            <TextView
+                android:id="@+id/rightButtonText"
+                android:text="Add Expense"
+                android:gravity="center"
+                android:background="@drawable/subtitle_background"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/button2"
-        android:orientation="vertical"
-        android:visibility="invisible"
-        android:layout_weight="0.3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content">
+    <FrameLayout
+        android:id="@+id/fab"
+        app:layout_constraintTop_toBottomOf="@id/buttonsContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="58dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_fab"
+        android:layout_height="58dp">
 
         <ImageView
-            android:src="@drawable/ic_donut_large_black_24dp"
+            android:src="@drawable/ic_add_black_24dp"
+            android:background="@null"
+            android:layout_width="24dp"
             android:layout_gravity="center"
-            android:background="@drawable/icon_background"
-            android:layout_marginBottom="16dp"
-            android:padding="16dp"
-            android:layout_width="64dp"
-            android:layout_height="64dp"/>
+            android:layout_height="24dp"
+            app:cornerRadius="56dp" />
 
-        <TextView
-            android:text="Add Task"
-            android:gravity="center"
-            android:background="@drawable/subtitle_background"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/button3"
-        android:orientation="vertical"
-        android:layout_weight="0.3"
-        android:visibility="invisible"
-        android:layout_width="0dp"
-        android:translationY="80dp"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:src="@drawable/ic_donut_large_black_24dp"
-            android:layout_gravity="center"
-            android:background="@drawable/icon_background"
-            android:layout_marginBottom="16dp"
-            android:padding="16dp"
-            android:layout_width="64dp"
-            android:layout_height="64dp"/>
-
-        <TextView
-            android:text="Add Expense"
-            android:gravity="center"
-            android:background="@drawable/subtitle_background"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
-
+    </FrameLayout>
 </merge>

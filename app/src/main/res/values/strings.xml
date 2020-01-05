@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">AnimatedDownloadButton</string>
     <string name="quick_actions">Quick actions</string>
+    <string name="add_timesheet">Add Timesheet</string>
+    <string name="add_task">Add task</string>
+    <string name="add_expense">Add Expense</string>
 </resources>

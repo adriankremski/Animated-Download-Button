@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ExpandableFabButton">
+        <attr name="leftButtonText" format="reference" />
+        <attr name="centerButtonText" format="reference" />
+        <attr name="rightButtonText" format="reference" />
+
+        <attr name="leftButtonIcon" format="reference" />
+        <attr name="centerButtonIcon" format="reference" />
+        <attr name="rightButtonIcon" format="reference" />
+    </declare-styleable>
+</resources>
