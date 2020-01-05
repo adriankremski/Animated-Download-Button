@@ -16,6 +16,7 @@ import android.animation.ObjectAnimator
 import android.widget.LinearLayout
 import com.github.snuffix.animateddownloadbutton.R
 import com.github.snuffix.animateddownloadbutton.setVisible
+import kotlinx.android.synthetic.main.layout_quick_actions.view.*
 import kotlinx.coroutines.NonCancellable.start
 import kotlinx.coroutines.delay
 
@@ -117,7 +118,7 @@ class RoundNavigationButtonsLayout @JvmOverloads constructor(
     }
 
     private fun translateFirstButton() {
-        val firstButton = getChildViews<LinearLayout>()[0]
+        val firstButton = button1
         firstButton.setVisible()
         firstButton.translateX(startTranslation = (width / 2 - firstButton.width / 2).toFloat(), endTranslation = 0f)
         firstButton.translateY(startTranslation = height.toFloat(), endTranslation = firstButton.y)
@@ -143,14 +144,14 @@ class RoundNavigationButtonsLayout @JvmOverloads constructor(
     }
 
     private fun translateSecondButton() {
-        val secondButton = getChildViews<LinearLayout>()[1]
+        val secondButton = button2
         secondButton.setVisible()
         secondButton.translateY(startTranslation = height.toFloat(), endTranslation = secondButton.y)
         startScaleAnimation(secondButton)
     }
 
     private fun translateThirdButton() {
-        val thirdButton = getChildViews<LinearLayout>()[2]
+        val thirdButton = button3
         thirdButton.setVisible()
         thirdButton.translateX(startTranslation = -(thirdButton.x - width/2 + thirdButton.width/2), endTranslation = 0f)
         thirdButton.translateY(startTranslation = height.toFloat(), endTranslation = thirdButton.y)
@@ -175,7 +176,7 @@ class RoundNavigationButtonsLayout @JvmOverloads constructor(
     fun hideButtons(lifecycleScope: LifecycleCoroutineScope, block: () -> Unit) {
         lifecycleScope.launch {
 
-            val thirdButton = getChildViews<LinearLayout>()[2]
+            val thirdButton = button3
             thirdButton.setVisible()
             thirdButton.translateX(endTranslation = -(thirdButton.x - width/2 + thirdButton.width/2), startTranslation = 0f)
             thirdButton.translateY(endTranslation = height.toFloat(), startTranslation = thirdButton.y)
@@ -184,14 +185,14 @@ class RoundNavigationButtonsLayout @JvmOverloads constructor(
 
             delay(animationDuration / 2)
 
-            val secondButton = getChildViews<LinearLayout>()[1]
+            val secondButton = button2
             secondButton.setVisible()
             secondButton.translateY(endTranslation = height.toFloat(), startTranslation = secondButton.y)
             startScaleAnimation(secondButton, startScale = 1f, endScale = 0f)
 
             delay(animationDuration / 2)
 
-            val firstButton = getChildViews<LinearLayout>()[0]
+            val firstButton = button1
             firstButton.setVisible()
             firstButton.translateX(endTranslation = (width / 2 - firstButton.width / 2).toFloat(), startTranslation = 0f)
             firstButton.translateY(endTranslation = height.toFloat(), startTranslation = firstButton.y)

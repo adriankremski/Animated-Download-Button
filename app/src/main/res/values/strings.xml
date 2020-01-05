@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AnimatedDownloadButton</string>
+    <string name="quick_actions">Quick actions</string>
 </resources>

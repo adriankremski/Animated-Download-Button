@@ -41,41 +41,55 @@ class MainActivity : AppCompatActivity() {
         showSuccess.setOnClickListener { downloadButton.buttonState = AnimatedDownloadButton.ButtonState.Success(animated = false) }
 
         quickActions.setOnClickListener {
-            quickActions.post {
-                val frameLayout = RoundNavigationButtonsLayout(arcRadius = 230f, context = this)
-                frameLayout.minimumWidth = screenWidth
-                frameLayout.minimumHeight = screenHeight / 3
-                frameLayout.popOver(this@MainActivity, quickActions,
-                    adjuster = {
-                        Point(-quickActions.x.toInt(), -(quickActions.height + frameLayout.height))
-                    },
-                    options = {
-                        contentView.alpha = 0f
-                        contentView.setOnTouchListener { _, _ ->
-                            contentView.animate().alpha(0f).apply {
-                                duration = 300L
-                                start()
+
+        }
+
+        animator.updateGlyphs(R.string.quick_actions, R.drawable.ic_add_black_24dp)
+        animator.animationEndListener = {isExtended ->
+            if (!isExtended) {
+                expandable_fab.post {
+                    val frameLayout = RoundNavigationButtonsLayout(arcRadius = 230f, context = this)
+                    frameLayout.minimumWidth = screenWidth
+                    frameLayout.minimumHeight = screenHeight / 3
+                    frameLayout.popOver(this@MainActivity, expandable_fab,
+                        adjuster = {
+                            Point(-expandable_fab.x.toInt(), -(frameLayout.height))
+                        },
+                        options = {
+                            contentView.alpha = 0f
+                            contentView.setOnTouchListener { _, _ ->
+                                contentView.animate().alpha(0f).apply {
+                                    duration = 300L
+                                    start()
+                                }
+
+                                frameLayout.hideButtons(lifecycleScope) {
+                                    animator.isExtended = true
+                                    dismiss()
+                                }
+
+                                true
                             }
 
-                            frameLayout.hideButtons(lifecycleScope) {
-                                dismiss()
+                            frameLayout.afterMeasured {
+                                contentView.animate().alpha(1f).apply {
+                                    duration = 300L
+                                    start()
+                                }
+                                frameLayout.animateButtons(lifecycleScope)
                             }
-
-                            true
-                        }
-
-                        frameLayout.afterMeasured {
-                            contentView.animate().alpha(1f).apply {
-                                duration = 300L
-                                start()
-                            }
-                            frameLayout.animateButtons(lifecycleScope)
-                        }
-                    })
+                        })
+                }
             }
         }
+        expandable_fab.setOnClickListener { animator.isExtended = !animator.isExtended }
+    }
+
+    private val animator: FabExtensionAnimator by lazy {
+        FabExtensionAnimator(expandable_fab)
     }
 }
+
 
 fun View.popOver(
     activity: AppCompatActivity,
