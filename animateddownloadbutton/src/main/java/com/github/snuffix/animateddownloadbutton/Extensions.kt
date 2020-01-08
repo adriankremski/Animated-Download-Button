@@ -3,10 +3,12 @@ package com.github.snuffix.animateddownloadbutton
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.res.Resources
 import android.content.res.TypedArray
 import android.util.AttributeSet
+import android.util.DisplayMetrics
 import android.view.View
 import android.view.ViewPropertyAnimator
 import androidx.core.content.ContextCompat
@@ -47,6 +49,20 @@ fun View.setInvisible() {
 
 val screenDensity: Float
     get() = Resources.getSystem().displayMetrics.density
+
+val Activity.screenWidth: Int
+    get()  {
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        return displayMetrics.widthPixels
+    }
+
+val Activity.screenHeight: Int
+    get()  {
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        return displayMetrics.heightPixels
+    }
 
 val Int.dp: Int
     get() = (this * screenDensity).toInt()

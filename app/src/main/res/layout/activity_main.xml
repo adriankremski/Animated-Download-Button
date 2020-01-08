@@ -7,6 +7,7 @@
     tools:context=".sample.MainActivity">
 
     <LinearLayout
+        android:id="@+id/content2"
         android:orientation="vertical"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -65,16 +66,47 @@
 
     <com.github.snuffix.animateddownloadbutton.AnimatedDownloadButton
         android:id="@+id/downloadButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         app:animationDuration="500"
-        app:frameCornerRadius="16dp"
-        app:frameStrokeWidth="6dp"
+        app:frameCornerRadius="8dp"
+        app:frameStrokeWidth="3dp"
         app:tintColor="@color/colorAccent"
-        app:centerIconSize="40dp"
+        app:downloadIconSize="24dp"
+        app:tickIconSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/quickActions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="50dp"
+        android:visibility="gone"
+        android:text="Quick actions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <com.github.snuffix.animateddownloadbutton.sample.expandable_fab.ExpandableFabButton
+        android:id="@+id/expandable_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:insetTop="0px"
+        android:insetBottom="0px"
+        app:leftButtonText="@string/add_timesheet"
+        app:centerButtonText="@string/add_task"
+        app:rightButtonText="@string/add_expense"
+        app:leftButtonIcon="@drawable/ic_file_download"
+        app:centerButtonIcon="@drawable/ic_whatshot_24dp"
+        app:rightButtonIcon="@drawable/ic_donut_large_black_24dp"
+        app:cornerRadius="56dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

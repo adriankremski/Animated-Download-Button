@@ -18,7 +18,8 @@ class AnimatedDownloadButton @JvmOverloads constructor(
 
     private var animationDuration = 500L
     private var frameStrokeWidth = 3.dp
-    private var centerIconSize = 16.dp
+    private var downloadIconSize = 16.dp
+    private var tickIconSize = 16.dp
     private var tintColor = -1
 
     private var frameRectangleRadius = 8.dp.toFloat()
@@ -94,7 +95,7 @@ class AnimatedDownloadButton @JvmOverloads constructor(
         downloadIconAnimation?.await()
     }
 
-    private suspend fun createAlphaAnimationAsync(view: View, alpha: Float, alphaDuration : Long = animationDuration) = scope?.async {
+    private suspend fun createAlphaAnimationAsync(view: View, alpha: Float, alphaDuration: Long = animationDuration) = scope?.async {
         view.animate().alpha(alpha).run {
             duration = alphaDuration
             start()
@@ -204,14 +205,15 @@ class AnimatedDownloadButton @JvmOverloads constructor(
             frameRectangleRadius = this.getDimensionPixelSize(R.styleable.AnimatedDownloadButton_frameCornerRadius, frameRectangleRadius.toInt()).toFloat()
             frameStrokeWidth = this.getDimensionPixelSize(R.styleable.AnimatedDownloadButton_frameStrokeWidth, frameStrokeWidth)
             animationDuration = this.getInteger(R.styleable.AnimatedDownloadButton_animationDuration, animationDuration.toInt()).toLong()
-            centerIconSize = this.getDimensionPixelSize(R.styleable.AnimatedDownloadButton_centerIconSize, centerIconSize)
+            downloadIconSize = this.getDimensionPixelSize(R.styleable.AnimatedDownloadButton_downloadIconSize, downloadIconSize)
+            tickIconSize = this.getDimensionPixelSize(R.styleable.AnimatedDownloadButton_tickIconSize, tickIconSize)
             tintColor = this.getColor(R.styleable.AnimatedDownloadButton_tintColor, context.getColorCompat(R.color.colorAccent))
         }
 
-        buttonDownloadIcon.layoutParams = LayoutParams(centerIconSize, centerIconSize, Gravity.CENTER)
+        buttonDownloadIcon.layoutParams = LayoutParams(downloadIconSize, downloadIconSize, Gravity.CENTER)
         buttonDownloadIcon.setColorFilter(tintColor)
 
-        buttonTickIcon.layoutParams = LayoutParams(centerIconSize, centerIconSize, Gravity.CENTER)
+        buttonTickIcon.layoutParams = LayoutParams(tickIconSize, tickIconSize, Gravity.CENTER)
         buttonTickIcon.setColorFilter(tintColor)
 
         buttonBackgroundFrame.setColorFilter(tintColor)

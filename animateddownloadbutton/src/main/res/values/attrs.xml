@@ -4,7 +4,8 @@
         <attr name="frameCornerRadius" format="dimension" />
         <attr name="frameStrokeWidth" format="dimension" />
         <attr name="animationDuration" format="integer" />
-        <attr name="centerIconSize" format="dimension" />
+        <attr name="downloadIconSize" format="dimension" />
+        <attr name="tickIconSize" format="dimension" />
         <attr name="tintColor" format="reference" />
     </declare-styleable>
 </resources>
