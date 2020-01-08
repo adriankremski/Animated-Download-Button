@@ -73,11 +73,21 @@ class AnimatedDownloadButton @JvmOverloads constructor(
             } else {
                 frameDrawable.cornerRadius = frameRectangleRadius
                 buttonTickIcon.alpha = 0f
-                buttonProgressBar.setGone()
+                hideProgressBar()
                 buttonDownloadIcon.alpha = 1f
                 buttonBackgroundFrame.alpha = 0.1f
             }
         }
+    }
+
+    private fun showProgressBar() {
+        buttonProgressBar.setVisible()
+        buttonProgressBar.alpha = 1f
+    }
+
+    private fun hideProgressBar() {
+        buttonProgressBar.setGone()
+        buttonProgressBar.alpha = 0f
     }
 
     private suspend fun resetStateAnimated(previousState: ButtonState) {
@@ -131,7 +141,7 @@ class AnimatedDownloadButton @JvmOverloads constructor(
                 showProgressAnimated(previousState)
             } else {
                 frameDrawable.cornerRadius = frameCircleCornerRadius
-                buttonProgressBar.alpha = 1f
+                showProgressBar()
                 buttonBackgroundFrame.alpha = 0.1f
                 buttonTickIcon.alpha = 0f
                 buttonDownloadIcon.alpha = 0f
@@ -157,6 +167,7 @@ class AnimatedDownloadButton @JvmOverloads constructor(
 
         // Show progress bar
         progressDrawable?.stop()
+        buttonProgressBar.setVisible()
         createAlphaAnimationAsync(view = buttonProgressBar, alpha = 1f, alphaDuration = 1L)?.await()
         progressDrawable?.start()
 
@@ -175,7 +186,7 @@ class AnimatedDownloadButton @JvmOverloads constructor(
                 buttonTickIcon.alpha = 1f
                 buttonBackgroundFrame.alpha = 1f
                 buttonDownloadIcon.alpha = 0f
-                buttonProgressBar.alpha = 0f
+                hideProgressBar()
                 buttonTickIcon.setImageDrawable(context.getDrawableCompat(R.drawable.ic_tick_final))
             }
         }
@@ -187,6 +198,7 @@ class AnimatedDownloadButton @JvmOverloads constructor(
             val backgroundFrameAnimation = createAlphaAnimationAsync(view = buttonBackgroundFrame, alpha = 1f)
 
             progressBarAnimation?.await()
+            buttonProgressBar.setGone()
             backgroundFrameAnimation?.await()
         } else if (previousState is ButtonState.Download) {
             val backgroundCornersAnimation = createFrameCornersAnimationAsync(startCornerRadius = frameRectangleRadius, finalCornerRadius = frameCircleCornerRadius)
