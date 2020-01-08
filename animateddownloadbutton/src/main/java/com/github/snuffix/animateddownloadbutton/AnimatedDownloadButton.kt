@@ -25,7 +25,15 @@ class AnimatedDownloadButton @JvmOverloads constructor(
     private var frameRectangleRadius = 8.dp.toFloat()
 
     private val frameCircleCornerRadius: Float
-        get() = (buttonBackgroundFrame.width / 2).toFloat()
+        get() {
+            return if (width == 0) {
+                val measureSpec = MeasureSpec.makeMeasureSpec(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED)
+                measure(measureSpec, measureSpec)
+                measuredWidth / 2f
+            } else {
+                width / 2f
+            }
+        }
 
     private val frameDrawable by lazy {
         GradientDrawable().apply {
